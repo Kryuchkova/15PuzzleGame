@@ -3,14 +3,15 @@ var gameField = [
 	 [1,2,3,4],
 	 [5,6,7,8],
 	 [9,10,11,12],
-	 [13,14,15,0]
-	 ];
+	 [13,14,15,""]
+	];
 
 var field;
 let nullCell = { 
   x: 3,  
   y: 3       
 };
+var move;
 
 // обменивает местами ячейки
 function swapCells(gameField, x1, y1, x2, y2){
@@ -43,7 +44,6 @@ function shuffle(count) {
 					swapCells(gameField, nullCell.x, nullCell.y, nullCell.x, --nullCell.y);
 				}
 			break;
-		 
 		}
 	}
 }
@@ -70,6 +70,7 @@ function createField(){
 			}
 		tbody.appendChild(row);		
 	}
+
 	// проверка на случай, если игрок начнет игру сначала
 	if(field.childNodes.length == 1) {
 		// удаляем таблицу, если она есть
@@ -84,7 +85,7 @@ window.onload = function() {
 	game();				
 	document.getElementById("play").onclick = game;
 }
-
+	
 function cellClick(event){	
 	var event = event || window.event;
 	cell = event.srcElement || event.target;
@@ -92,7 +93,6 @@ function cellClick(event){
 	x = cell.id.charAt(0);
 	// номер столбца
 	y = cell.id.charAt(2);
-	console.log(x, " ", y);
 	// меняем местами пустую ячейку с выбранной,
 	// если расстояние между ними равно 1
 	// и они в одном столбца или строке
@@ -101,7 +101,10 @@ function cellClick(event){
 		cell.innerHTML = "";
 		nullCell.x = x;
 		nullCell.y = y;
-		var q = true;
+		move++;
+		document.getElementById("move").innerHTML = move;
+	}
+	var q = true;
 		//Проверяем не в выигрышной ли комбинации находятся ячейки.
 		for(i = 0; i < 4; i++) {
 			for(j = 0; j < 4; j++) {
@@ -113,10 +116,11 @@ function cellClick(event){
 		}
 		if (q)
 			alert("YOU WIN!");
-	}
 }
-	
+
 function game() {
+	move = 0;
+	document.getElementById("move").innerHTML = move;
 	shuffle(350);
-	createField();
+	createField(); 
 }

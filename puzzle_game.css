@@ -1,6 +1,6 @@
 body {
   height: 100%;
-  background: #66A3D2;
+  background: #983FD5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,15 +14,15 @@ body {
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   padding: 5px;
-  width: 80px;
-  background-color: #FFC373;
-  color: #003333;
+  width: 200px;
+  background-color: #34CFBE;
+  color: #A64600;
   outline: none;
   cursor: pointer;
   margin: 50px 50px 50px 50px;
 }
 
-.footer span {
+.footer p {
   flex: 1;
   text-align: center;
   font-size: 20px;
@@ -31,9 +31,30 @@ body {
   margin: auto 0;
 }
 
-canvas {
-	background:#66A3D2;
-	width: 500px;
-	height: 500px;
-	border: 1px solid #033E6B;
+#field table {
+  width: 700px;
+  height: 700px;
+}
+
+td {				
+	text-align:center;				
+	font-family:Times New Roman;
+	color: #5CCCCC;
+	vertical-align: middle;				
+}
+
+#field td {
+	border:solid 1px #5CCCCC;
+	text-align:center;
+	font-size:40px;
+	font-family:Times New Roman;
+	color: #5CCCCC;
+	width: 55px;
+	height: 55px;
+}
+
+#field td:hover {
+	background: #C9F76F;
+	color: #A64600;
+	cursor: url("images/icon1.png"), auto;
 }
